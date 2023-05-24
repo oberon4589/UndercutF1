@@ -1,0 +1,40 @@
+<%-include ('../../partials/header.ejs')%>
+<%-include ('../../partials/navbar.ejs')%>
+
+<div class="container">
+    <hr>
+    <h2>Usuários</h2>
+    <a class="btn btn-success" href="/admin/users/create">Criar novo usuário</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+        </thead>
+        <tbody><% users.forEach(user => { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <form method="POST" action="/users/delete" style="display: inline;" onsubmit="deleteUser(event, this)"> <! – O this passa o formulário como parâmetro para a função deleteCategory – >
+                        <input type="hidden" name="id" value="<%= user.id %>">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+            </tr>
+            <% }) %>
+        </tbody>    
+    </table>
+</div>
+
+<%-include ('../../partials/footer.ejs')%>
+<script>
+    function deleteUser(event, form){
+        event.preventDefault();
+        console.log("O formulário não foi enviado!");
+        var decision = confirm("Você deseja deletar esse usuário?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>
