@@ -13,6 +13,6 @@ const User = connection.define('users', {
     },
 });
 
-User.sync({ force: false }); // força a criação da tabela no banco de dados
+/*User.sync({ force: false });*/ // força a criação da tabela no banco de dados
 
 module.exports = User; // agora pode exportar o model Category para ser usado em outros arquivos

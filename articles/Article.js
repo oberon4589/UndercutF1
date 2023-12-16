@@ -19,8 +19,6 @@ const Article = connection.define('articles', {
 });
 
 Category.hasMany(Article); // uma categoria tem muitos artigos
-Article.belongsTo(Category); // um artigo pertence a uma categoria
+Article.belongsTo(Category); // um artigo pertence a uma categoria // força a criação da tabela no banco de dados
 
-Article.sync({ force: false }); // força a criação da tabela no banco de dados
-
-module.exports = Article; // agora pode exportar o model Category para ser usado em outros arquivos
+/*Article.sync({ force: false })*/ module.exports = Article; // agora pode exportar o model Category para ser usado em outros arquivos
